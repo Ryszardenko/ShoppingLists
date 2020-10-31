@@ -19,6 +19,9 @@ interface ShoppingListDAO {
     @Update
     fun update(shoppingList: ShoppingList)
 
-    @Query("SELECT * FROM ShoppingList")
+    @Query("SELECT * FROM ShoppingList WHERE isArchived = 0")
     fun getShoppingLists(): LiveData<List<ShoppingList>>
+
+    @Query("SELECT * FROM ShoppingList WHERE isArchived = 1")
+    fun getArchivedShoppingLists(): LiveData<List<ShoppingList>>
 }

@@ -1,4 +1,4 @@
-package com.machmudow.shoppinglists.infrastructure.viewmodel
+package com.machmudow.shoppinglists.infrastructure.dagger
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

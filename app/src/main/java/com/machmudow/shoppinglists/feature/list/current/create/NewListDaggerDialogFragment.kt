@@ -1,34 +1,24 @@
-package com.machmudow.shoppinglists.feature.list.current.new
+package com.machmudow.shoppinglists.feature.list.current.create
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.machmudow.shoppinglists.R
 import com.machmudow.shoppinglists.databinding.FragmentNewListBinding
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingList
-import com.machmudow.shoppinglists.utils.BaseDialogFragment
+import com.machmudow.shoppinglists.utils.BaseDaggerDialogFragment
 import javax.inject.Inject
 
-class NewListFragment : BaseDialogFragment(R.layout.fragment_new_list) {
+class NewListDaggerDialogFragment : BaseDaggerDialogFragment(R.layout.fragment_new_list) {
 
     companion object {
-        fun newInstance() = NewListFragment()
+        fun newInstance() = NewListDaggerDialogFragment()
     }
 
     @Inject
     lateinit var viewModel: NewListViewModel
 
     private val binding get() = _binding as FragmentNewListBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_new_list, container)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

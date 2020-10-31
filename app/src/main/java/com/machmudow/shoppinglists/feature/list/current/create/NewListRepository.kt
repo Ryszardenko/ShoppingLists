@@ -1,4 +1,4 @@
-package com.machmudow.shoppinglists.feature.list.current.new
+package com.machmudow.shoppinglists.feature.list.current.create
 
 import com.machmudow.shoppinglists.infrastructure.room.ShoppingListDAO
 import javax.inject.Inject
@@ -8,5 +8,7 @@ class NewListRepository
     private val shoppingListDAO: ShoppingListDAO
 ) {
 
-    fun createShoppingList() {}
+    fun createShoppingList() {
+
+    }
 }

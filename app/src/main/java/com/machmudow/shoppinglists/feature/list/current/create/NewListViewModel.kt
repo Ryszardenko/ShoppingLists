@@ -1,5 +1,4 @@
-package com.machmudow.shoppinglists.feature.list.current.new
-
+package com.machmudow.shoppinglists.feature.list.current.create
 
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingList
 import com.machmudow.shoppinglists.utils.BaseViewModel
@@ -12,7 +11,6 @@ class NewListViewModel
 ) : BaseViewModel() {
 
     fun createShoppingList(shoppingList: ShoppingList) {
-        Log.d("created")
-        repository.createShoppingList()
+        repository.createShoppingList(shoppingList)
     }
 }

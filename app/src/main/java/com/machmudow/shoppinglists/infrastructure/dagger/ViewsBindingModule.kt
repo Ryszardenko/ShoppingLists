@@ -2,11 +2,10 @@ package com.machmudow.shoppinglists.infrastructure.dagger
 
 import com.machmudow.shoppinglists.feature.MainActivity
 import com.machmudow.shoppinglists.feature.list.current.CurrentListFragment
-import com.machmudow.shoppinglists.feature.list.current.new.NewListFragment
+import com.machmudow.shoppinglists.feature.list.current.create.NewListDaggerDialogFragment
 import dagger.Module
 import dagger.android.AndroidInjectionModule
 import dagger.android.ContributesAndroidInjector
-import javax.inject.Singleton
 
 @Module(includes = [AndroidInjectionModule::class])
 abstract class ViewsBindingModule {
@@ -18,5 +17,5 @@ abstract class ViewsBindingModule {
     abstract fun bindCurrentListFragment(): CurrentListFragment
 
     @ContributesAndroidInjector
-    abstract fun bindNewListFragment(): NewListFragment
+    abstract fun bindNewListDialogFragment(): NewListDaggerDialogFragment
 }

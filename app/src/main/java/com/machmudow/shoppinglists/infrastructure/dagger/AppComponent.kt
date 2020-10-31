@@ -26,5 +26,4 @@ interface AppComponent : AndroidInjector<App> {
         fun databaseModule(databaseModule: DatabaseModule): Builder
         fun build(): AppComponent
     }
-
 }
