@@ -13,7 +13,11 @@ class DatabaseModule(private val context: Context) {
     @Singleton
     fun provideDatabase() = AppDatabase(context)
 
-//    @Provides
-//    @Singleton
-//    fun provideFolderDAO(appDatabase: AppDatabase) = appDatabase.getFolderDAO()
+    @Provides
+    @Singleton
+    fun provideShoppingListDAO(appDatabase: AppDatabase) = appDatabase.getShoppingListDAO()
+
+    @Provides
+    @Singleton
+    fun provideShoppingItemDAO(appDatabase: AppDatabase) = appDatabase.getShoppingItemDAO()
 }

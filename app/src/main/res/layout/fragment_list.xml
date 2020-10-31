@@ -6,21 +6,19 @@
     android:layout_height="match_parent"
     android:backgroundTint="@color/white"
     android:orientation="vertical"
-    tools:context=".feature.list.ListFragment">
+    tools:context=".feature.list.ShoppingListFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/light_green"
         app:title="@string/shopping_lists"
-        app:titleTextAppearance="@style/TextMontserratMedium"
+        app:titleTextAppearance="@style/TextMontserratMedium.Medium"
         app:titleTextColor="@color/white" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
-        style="@style/TabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        style="@style/TabLayout" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"

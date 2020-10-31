@@ -1,5 +1,7 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="default_margin_xs">4dp</dimen>
+    <dimen name="default_margin_small">8dp</dimen>
     <dimen name="default_margin">16dp</dimen>
     <dimen name="default_margin_large">32dp</dimen>
     <dimen name="default_icon">24dp</dimen>
@@ -12,4 +14,11 @@
     <dimen name="text_xl">20sp</dimen>
     <dimen name="text_xxl">22sp</dimen>
     <dimen name="text_xxxl">24sp</dimen>
+
+    <dimen name="btn_height_large">60dp</dimen>
+    <dimen name="btn_corner_large">24dp</dimen>
+
+    <dimen name="stroke_thin">1dp</dimen>
+    <dimen name="stroke_medium">2dp</dimen>
+    <dimen name="stroke_thick">3dp</dimen>
 </resources>

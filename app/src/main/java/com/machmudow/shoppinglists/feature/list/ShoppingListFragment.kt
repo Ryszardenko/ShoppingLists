@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.machmudow.shoppinglists.R
 import com.machmudow.shoppinglists.databinding.FragmentListBinding
 
-class ListFragment : Fragment(R.layout.fragment_list) {
+class ShoppingListFragment : Fragment(R.layout.fragment_list) {
 
     private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
@@ -18,6 +18,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         _binding = FragmentListBinding.bind(view)
 
         initPager()
+        setTabIcons()
     }
 
     override fun onDestroy() {
@@ -29,5 +30,10 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         val adapter = ListPagerAdapter(context, childFragmentManager)
         binding.viewPager.adapter = adapter
         binding.tabLayout.setupWithViewPager(binding.viewPager)
+    }
+
+    private fun setTabIcons() {
+        binding.tabLayout.getTabAt(0)?.setIcon(R.drawable.ic_list)
+        binding.tabLayout.getTabAt(1)?.setIcon(R.drawable.ic_archived)
     }
 }

@@ -2,16 +2,18 @@ package com.machmudow.shoppinglists.infrastructure.room
 
 import android.content.Context
 import androidx.room.*
-import com.machmudow.shoppinglists.infrastructure.model.ListItem
+import com.machmudow.shoppinglists.infrastructure.model.ShoppingItem
+import com.machmudow.shoppinglists.infrastructure.model.ShoppingList
 
 @Database(
     entities = [
-        ListItem::class
+        ShoppingList::class,
+        ShoppingItem::class
     ],
     version = 1
 )
 
-//@TypeConverters(Converters::class)
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
     companion object {
@@ -39,5 +41,6 @@ abstract class AppDatabase : RoomDatabase() {
             .build()
     }
 
-//abstract fun getDAO
+    abstract fun getShoppingListDAO(): ShoppingListDAO
+    abstract fun getShoppingItemDAO(): ShoppingItemDAO
 }

@@ -14,7 +14,6 @@ import javax.inject.Singleton
         DatabaseModule::class,
         ViewsBindingModule::class,
         ViewModelModule::class
-//        AppModule::class
     ]
 )
 interface AppComponent : AndroidInjector<App> {
@@ -28,5 +27,4 @@ interface AppComponent : AndroidInjector<App> {
         fun build(): AppComponent
     }
 
-//    override fun inject(instance: App?) {}
 }

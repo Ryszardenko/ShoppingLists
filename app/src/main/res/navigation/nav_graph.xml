@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.machmudow.shoppinglists.feature.list.ListFragment"
+        android:name="com.machmudow.shoppinglists.feature.list.ShoppingListFragment"
         tools:layout="@layout/fragment_list" />
 
 </navigation>
