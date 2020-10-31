@@ -1,0 +1,15 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="default_margin_large">32dp</dimen>
+    <dimen name="default_icon">24dp</dimen>
+
+    <dimen name="text_xxs">10sp</dimen>
+    <dimen name="text_xs">12sp</dimen>
+    <dimen name="text_small">14sp</dimen>
+    <dimen name="text_medium">16sp</dimen>
+    <dimen name="text_large">18sp</dimen>
+    <dimen name="text_xl">20sp</dimen>
+    <dimen name="text_xxl">22sp</dimen>
+    <dimen name="text_xxxl">24sp</dimen>
+</resources>
