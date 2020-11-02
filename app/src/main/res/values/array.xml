@@ -2,6 +2,10 @@
 <resources>
     <array name="edit">
         <item>Edit</item>
+        <item>Archive</item>
         <item>Delete</item>
+    </array>
+    <array name="unarchive">
+        <item>Unarchive</item>
     </array>
 </resources>

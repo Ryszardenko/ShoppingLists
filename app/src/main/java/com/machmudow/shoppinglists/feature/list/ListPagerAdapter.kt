@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.machmudow.shoppinglists.R
+import com.machmudow.shoppinglists.feature.list.archived.ArchivedListFragment
 import com.machmudow.shoppinglists.feature.list.current.CurrentListFragment
 
 class ListPagerAdapter(private val context: Context?, fragmentManager: FragmentManager) :
@@ -17,7 +18,7 @@ class ListPagerAdapter(private val context: Context?, fragmentManager: FragmentM
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> CurrentListFragment()
-            else -> CurrentListFragment()
+            else -> ArchivedListFragment()
         }
     }
 

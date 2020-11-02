@@ -19,8 +19,13 @@ class CurrentListRepository
 
     val shoppingLists = shoppingListDAO.getShoppingLists()
 
-    fun removeShoppingList(shoppingList: ShoppingList) =
+    fun removeShoppingList(shoppingListId: Int) =
         GlobalScope.launch {
-            shoppingListDAO.remove(shoppingList.id)
+            shoppingListDAO.remove(shoppingListId)
+        }
+
+    fun archiveShoppingList(shoppingListId: Int) =
+        GlobalScope.launch {
+            shoppingListDAO.archive(shoppingListId)
         }
 }

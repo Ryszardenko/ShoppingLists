@@ -15,4 +15,5 @@
     <string name="error">An error occurred, please try again later.</string>
     <string name="confirm">Confirm</string>
     <string name="no_shopping_list">You have not added any shopping list</string>
+    <string name="no_archived_shopping_list">You do not have any archived shopping lists</string>
 </resources>

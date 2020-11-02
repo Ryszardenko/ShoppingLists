@@ -24,6 +24,12 @@ interface ShoppingListDAO {
     @Query("DELETE FROM ShoppingList WHERE id = :shoppingListId")
     fun remove(shoppingListId: Int)
 
+    @Query("UPDATE ShoppingList SET isArchived = 1 WHERE id = :shoppingListId")
+    fun archive(shoppingListId: Int)
+
+    @Query("UPDATE ShoppingList SET isArchived = 0 WHERE id = :shoppingListId")
+    fun unarchive(shoppingListId: Int)
+
     @Query("SELECT * FROM ShoppingList WHERE isArchived = 0 ORDER BY date DESC")
     fun getShoppingLists(): LiveData<List<ShoppingList>>
 

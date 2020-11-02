@@ -1,4 +1,4 @@
-package com.machmudow.shoppinglists.feature.list
+package com.machmudow.shoppinglists.feature.list.current
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import com.machmudow.shoppinglists.databinding.RecyclerListItemBinding
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingList
 import com.machmudow.shoppinglists.utils.BaseRecyclerViewAdapter
 
-class ShoppingListAdapter(
+class ListAdapter(
     private val listener: ShoppingListListener
 ) : BaseRecyclerViewAdapter<ShoppingList>() {
 

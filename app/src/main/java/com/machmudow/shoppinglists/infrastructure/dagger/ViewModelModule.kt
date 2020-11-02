@@ -1,6 +1,7 @@
 package com.machmudow.shoppinglists.infrastructure.dagger
 
 import androidx.lifecycle.ViewModel
+import com.machmudow.shoppinglists.feature.list.archived.ArchivedListViewModel
 import com.machmudow.shoppinglists.feature.list.current.CurrentListViewModel
 import com.machmudow.shoppinglists.feature.list.current.create.NewListDialogViewModel
 import com.machmudow.shoppinglists.feature.list.current.edit.EditListDialogViewModel
@@ -15,6 +16,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(CurrentListViewModel::class)
     abstract fun bindCurrentListViewModel(viewModel: CurrentListViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ArchivedListViewModel::class)
+    abstract fun bindArchivedListViewModel(viewModel: ArchivedListViewModel): ViewModel
 
     @Binds
     @IntoMap
