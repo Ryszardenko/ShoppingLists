@@ -5,6 +5,8 @@ import com.machmudow.shoppinglists.feature.list.archived.ArchivedListFragment
 import com.machmudow.shoppinglists.feature.list.current.CurrentListFragment
 import com.machmudow.shoppinglists.feature.list.current.create.NewListDialogFragment
 import com.machmudow.shoppinglists.feature.list.current.edit.EditListDialogFragment
+import com.machmudow.shoppinglists.feature.list.details.DetailsFragment
+import com.machmudow.shoppinglists.feature.list.details.create.NewItemDialogFragment
 import dagger.Module
 import dagger.android.AndroidInjectionModule
 import dagger.android.ContributesAndroidInjector
@@ -22,8 +24,14 @@ abstract class ViewsBindingModule {
     abstract fun bindArchivedListFragment(): ArchivedListFragment
 
     @ContributesAndroidInjector
+    abstract fun bindDetailsFragment(): DetailsFragment
+
+    @ContributesAndroidInjector
     abstract fun bindNewListDialogFragment(): NewListDialogFragment
 
     @ContributesAndroidInjector
     abstract fun bindEditListDialogFragment(): EditListDialogFragment
+
+    @ContributesAndroidInjector
+    abstract fun bindNewItemDialogFragment(): NewItemDialogFragment
 }

@@ -3,6 +3,7 @@ package com.machmudow.shoppinglists.infrastructure.room
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingItem
+import io.reactivex.Flowable
 
 @Dao
 interface ShoppingItemDAO {
@@ -20,5 +21,5 @@ interface ShoppingItemDAO {
     fun update(shoppingItem: ShoppingItem)
 
     @Query("SELECT * FROM ShoppingItem")
-    fun getShoppingItems(): LiveData<List<ShoppingItem>>
+    fun getShoppingItems(): List<ShoppingItem>
 }

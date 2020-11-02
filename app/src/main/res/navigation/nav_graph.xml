@@ -10,4 +10,9 @@
         android:name="com.machmudow.shoppinglists.feature.list.ShoppingListFragment"
         tools:layout="@layout/fragment_shopping_list" />
 
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.machmudow.shoppinglists.feature.list.details.DetailsFragment"
+        tools:layout="@layout/fragment_details" />
+
 </navigation>

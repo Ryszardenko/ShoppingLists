@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
@@ -14,8 +15,7 @@
             android:layout_width="@dimen/default_icon"
             android:layout_height="@dimen/default_icon"
             android:layout_margin="@dimen/default_margin"
-            android:background="@drawable/ic_shopping_cart"
-            android:backgroundTint="@color/light_green" />
+            android:background="@drawable/ic_item" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -30,19 +30,20 @@
                 android:textColor="@color/light_green" />
 
             <TextView
-                android:id="@+id/tv_date"
+                android:id="@+id/tv_quantity"
                 style="@style/TextMontserratMedium.Small"
                 android:textColor="@color/light_green" />
 
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btn_edit"
-            android:layout_margin="@dimen/default_margin_small"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:background="@drawable/ic_edit"
-            android:backgroundTint="@color/light_green"/>
+            android:id="@+id/btn_in_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_unchecked" />
 
     </LinearLayout>
 
