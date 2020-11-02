@@ -7,5 +7,6 @@
     </array>
     <array name="unarchive">
         <item>Unarchive</item>
+        <item>Delete</item>
     </array>
 </resources>

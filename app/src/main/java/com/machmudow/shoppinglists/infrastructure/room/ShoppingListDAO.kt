@@ -24,7 +24,7 @@ interface ShoppingListDAO {
     fun update(shoppingList: ShoppingList)
 
     @Query("DELETE FROM ShoppingList WHERE id = :shoppingListId")
-    fun remove(shoppingListId: Int)
+    fun delete(shoppingListId: Int)
 
     @Query("UPDATE ShoppingList SET isArchived = 1 WHERE id = :shoppingListId")
     fun archive(shoppingListId: Int)
@@ -53,4 +53,12 @@ interface ShoppingListDAO {
     @Transaction
     @Query("SELECT * FROM ShoppingList WHERE id = :shoppingListId")
     fun getShoppingListWithItems(shoppingListId: Int): LiveData<ShoppingListWithItems>
+
+    @Transaction
+    @Query("SELECT * FROM ShoppingList WHERE isArchived = 0")
+    fun getShoppingListsWithItems(): LiveData<List<ShoppingListWithItems>>
+
+    @Transaction
+    @Query("SELECT * FROM ShoppingList WHERE isArchived = 1")
+    fun getArchivedShoppingListsWithItems(): LiveData<List<ShoppingListWithItems>>
 }

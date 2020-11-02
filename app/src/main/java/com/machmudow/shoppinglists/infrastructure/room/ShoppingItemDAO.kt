@@ -22,4 +22,10 @@ interface ShoppingItemDAO {
 
     @Query("SELECT * FROM ShoppingItem")
     fun getShoppingItems(): List<ShoppingItem>
+
+    @Query("UPDATE ShoppingItem SET isInCart = 1 WHERE id = :shoppingItemId")
+    fun addToCart(shoppingItemId: Int)
+
+    @Query("UPDATE ShoppingItem SET isInCart = 0 WHERE id = :shoppingItemId")
+    fun removeFromCart(shoppingItemId: Int)
 }

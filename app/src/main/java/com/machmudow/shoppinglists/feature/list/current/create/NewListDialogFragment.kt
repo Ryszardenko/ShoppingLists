@@ -30,11 +30,6 @@ class NewListDialogFragment : BaseListDialogFragment() {
         observeStatus(viewModel.status)
     }
 
-    override fun onResume() {
-        super.onResume()
-        clearEditTexts()
-    }
-
     private fun createShoppingList(): ShoppingList {
         val title = binding.etTitle.text.toString()
         val description = binding.etDescription.text.toString()

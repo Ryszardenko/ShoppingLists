@@ -30,6 +30,7 @@ class ArchivedListFragment : BaseListFragment(), ShoppingListListener {
             .setItems(R.array.unarchive) { _, which ->
                 when (which) {
                     0 -> viewModel.unarchive(shoppingList.id)
+                    1 -> viewModel.delete(shoppingList.id)
                 }
             }
             .show()

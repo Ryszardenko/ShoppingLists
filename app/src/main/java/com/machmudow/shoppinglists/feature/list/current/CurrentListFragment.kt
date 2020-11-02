@@ -31,7 +31,7 @@ class CurrentListFragment : BaseListFragment(), ShoppingListListener {
                 when (which) {
                     0 -> editShoppingList(shoppingList)
                     1 -> viewModel.archiveShoppingList(shoppingList.id)
-                    2 -> viewModel.removeShoppingList(shoppingList.id)
+                    2 -> viewModel.deleteShoppingList(shoppingList.id)
                 }
             }
             .show()

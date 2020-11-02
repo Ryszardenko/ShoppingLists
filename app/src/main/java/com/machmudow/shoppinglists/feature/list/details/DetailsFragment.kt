@@ -9,6 +9,7 @@ import com.machmudow.shoppinglists.databinding.FragmentDetailsBinding
 import com.machmudow.shoppinglists.feature.list.details.create.NewItemDialogFragment
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingItem
 import com.machmudow.shoppinglists.utils.BaseDaggerFragment
+import com.machmudow.shoppinglists.utils.Constants.IS_ARCHIVED
 import com.machmudow.shoppinglists.utils.Constants.SHOPPING_LIST_ID
 import javax.inject.Inject
 
@@ -16,9 +17,10 @@ import javax.inject.Inject
 class DetailsFragment : BaseDaggerFragment(R.layout.fragment_details), DetailsListener {
 
     companion object {
-        fun setArguments(shoppingListId: Int): Bundle {
+        fun setArguments(shoppingListId: Int, isArchived: Boolean = false): Bundle {
             val args = Bundle()
             args.putInt(SHOPPING_LIST_ID, shoppingListId)
+            args.putBoolean(IS_ARCHIVED, isArchived)
             return args
         }
     }
@@ -33,22 +35,29 @@ class DetailsFragment : BaseDaggerFragment(R.layout.fragment_details), DetailsLi
         _binding = FragmentDetailsBinding.bind(view)
 
         val shoppingListId = arguments?.getInt(SHOPPING_LIST_ID)
+        val isArchived = arguments?.getBoolean(IS_ARCHIVED)
+
+        if(isArchived == true) {
+            binding.fab.visibility = View.GONE
+        }
 
         shoppingListId?.let {
-            initRecyclerView(shoppingListId)
+            initRecyclerView(shoppingListId, isArchived!!)
             onFabClick(shoppingListId)
         }
     }
 
-    override fun addToCart() {
+    override fun addToCart(shoppingItemId: Int) {
+        viewModel.addToCart(shoppingItemId)
     }
 
-    override fun removeFromCart() {
+    override fun removeFromCart(shoppingItemId: Int) {
+        viewModel.removeFromCart(shoppingItemId)
     }
 
-    private fun initRecyclerView(shoppingListId: Int) {
+    private fun initRecyclerView(shoppingListId: Int, isArchived: Boolean) {
         val mLayoutManager = LinearLayoutManager(requireContext())
-        val mAdapter = DetailsAdapter(this)
+        val mAdapter = DetailsAdapter(this, isArchived)
 
         binding.recyclerView.apply {
             layoutManager = mLayoutManager

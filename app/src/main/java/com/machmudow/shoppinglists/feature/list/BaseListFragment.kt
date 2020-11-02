@@ -8,10 +8,12 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.machmudow.shoppinglists.R
 import com.machmudow.shoppinglists.databinding.FragmentListBinding
+import com.machmudow.shoppinglists.feature.list.current.CurrentListFragment
 import com.machmudow.shoppinglists.feature.list.current.ListAdapter
 import com.machmudow.shoppinglists.feature.list.current.ShoppingListListener
 import com.machmudow.shoppinglists.feature.list.details.DetailsFragment
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingList
+import com.machmudow.shoppinglists.infrastructure.model.ShoppingListWithItems
 import com.machmudow.shoppinglists.utils.BaseDaggerFragment
 
 abstract class BaseListFragment : BaseDaggerFragment(R.layout.fragment_list), ShoppingListListener {
@@ -30,10 +32,20 @@ abstract class BaseListFragment : BaseDaggerFragment(R.layout.fragment_list), Sh
             .build()
 
         val navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
-        navController.navigate(R.id.detailsFragment, DetailsFragment.setArguments(shoppingListId), navOptions)
+        navController.navigate(
+            R.id.detailsFragment,
+            if (this is CurrentListFragment)
+                DetailsFragment.setArguments(shoppingListId)
+            else
+                DetailsFragment.setArguments(shoppingListId, true),
+            navOptions
+        )
     }
 
-    fun initRecyclerView(listener: ShoppingListListener, list: LiveData<List<ShoppingList>>) {
+    fun initRecyclerView(
+        listener: ShoppingListListener,
+        list: LiveData<List<ShoppingListWithItems>>
+    ) {
         val mLayoutManager = LinearLayoutManager(requireContext())
         val mAdapter = ListAdapter(listener)
 
@@ -44,17 +56,20 @@ abstract class BaseListFragment : BaseDaggerFragment(R.layout.fragment_list), Sh
         getShoppingLists(mAdapter, list)
     }
 
-    private fun getShoppingLists(adapter: ListAdapter, list: LiveData<List<ShoppingList>>) {
-        list.observe(viewLifecycleOwner) { archivedLists ->
-            adapter.setRecyclerList(archivedLists)
-            setEmptyTvVisibility(archivedLists)
+    private fun getShoppingLists(
+        adapter: ListAdapter,
+        list: LiveData<List<ShoppingListWithItems>>
+    ) {
+        list.observe(viewLifecycleOwner) { shoppingListsWithItems ->
+            adapter.setRecyclerList(shoppingListsWithItems)
+            setEmptyTvVisibility(shoppingListsWithItems)
             hideProgressLayout()
         }
     }
 
-    private fun setEmptyTvVisibility(shoppingLists: List<ShoppingList>) {
+    private fun setEmptyTvVisibility(shoppingListsWithItems: List<ShoppingListWithItems>) {
         binding.tvEmpty.visibility =
-            if (shoppingLists.isEmpty())
+            if (shoppingListsWithItems.isEmpty())
                 View.VISIBLE
             else
                 View.GONE

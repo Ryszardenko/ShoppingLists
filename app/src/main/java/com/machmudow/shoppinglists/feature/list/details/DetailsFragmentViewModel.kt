@@ -10,5 +10,7 @@ class DetailsFragmentViewModel
 
     fun getShoppingListWithItems(shoppingListId: Int) = repository.getShoppingListWithItems(shoppingListId)
 
-//    fun addToCart() = repository.addToCart
+    fun addToCart(shoppingItemId: Int) = repository.addToCart(shoppingItemId)
+
+    fun removeFromCart(shoppingItemId: Int) = repository.removeFromCart(shoppingItemId)
 }

@@ -31,7 +31,7 @@
                 android:textColor="@color/light_green" />
 
             <TextView
-                android:id="@+id/tv_date"
+                android:id="@+id/tv_in_cart"
                 style="@style/TextMontserratMedium.Small"
                 android:textColor="@color/light_green" />
 

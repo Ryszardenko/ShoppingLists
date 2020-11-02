@@ -10,7 +10,7 @@ class CurrentListViewModel
 
     val shoppingLists = repository.shoppingLists
 
-    fun removeShoppingList(shoppingListId: Int) = repository.removeShoppingList(shoppingListId)
-
     fun archiveShoppingList(shoppingListId: Int) = repository.archiveShoppingList(shoppingListId)
+
+    fun deleteShoppingList(shoppingListId: Int) = repository.deleteShoppingList(shoppingListId)
 }

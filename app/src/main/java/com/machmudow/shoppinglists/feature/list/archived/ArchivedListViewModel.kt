@@ -11,4 +11,5 @@ class ArchivedListViewModel
     val archivedLists = repository.archivedLists
 
     fun unarchive(shoppingListId: Int) = repository.unarchive(shoppingListId)
+    fun delete(shoppingListId: Int) = repository.delete(shoppingListId)
 }

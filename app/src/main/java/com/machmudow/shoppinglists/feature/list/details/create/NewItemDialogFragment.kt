@@ -38,36 +38,34 @@ class NewItemDialogFragment : BaseDaggerDialogFragment(R.layout.fragment_new_ite
 
         val shoppingListId = arguments?.getInt(SHOPPING_LIST_ID)
 
-
-        onConfirmClick {
-            val shoppingItem = ShoppingItem(
-                shoppingListId = shoppingListId!!,
-                title = binding.etTitle.text.toString(),
-                quantity = binding.etQuantity.text.toString().toInt(),
-            )
-
-
-            viewModel.insertShoppingItem(shoppingItem)
-        }
+        onConfirmClick(shoppingListId)
         observeStatus(viewModel.status)
         onCancelClick()
     }
 
-    private fun onConfirmClick(confirmFun: () -> Unit) {
+    override fun getTheme(): Int {
+        return R.style.Dialog_Transparent
+    }
+
+    private fun onConfirmClick(shoppingListId: Int?) {
         binding.btnConfirm.setOnClickListener {
-            when {
-                binding.etTitle.text.isNullOrBlank() -> context?.showShortToast(R.string.title_required)
-                binding.etQuantity.text.isNullOrBlank() -> context?.showShortToast(R.string.quantity_required)
-                else -> confirmFun()
+            shoppingListId?.let {
+                val shoppingItem = createShoppingItem(shoppingListId)
+
+                when {
+                    binding.etTitle.text.isNullOrBlank() -> context?.showShortToast(R.string.title_required)
+                    binding.etQuantity.text.isNullOrBlank() -> context?.showShortToast(R.string.quantity_required)
+                    else -> viewModel.insertShoppingItem(shoppingItem)
+                }
             }
         }
     }
-
 
     private fun observeStatus(status: MutableLiveData<Status>) {
         status.observe(viewLifecycleOwner) {
             when (it) {
                 Status.SUCCESS -> {
+                    clearEditTexts()
                     dismiss()
                 }
                 Status.LOADING -> {
@@ -87,5 +85,18 @@ class NewItemDialogFragment : BaseDaggerDialogFragment(R.layout.fragment_new_ite
         binding.btnCancel.setOnClickListener {
             dismiss()
         }
+    }
+
+    private fun createShoppingItem(shoppingListId: Int): ShoppingItem {
+        return ShoppingItem(
+            shoppingListId = shoppingListId,
+            title = binding.etTitle.text.toString(),
+            quantity = binding.etQuantity.text.toString().toInt(),
+        )
+    }
+
+    private fun clearEditTexts() {
+        binding.etTitle.setText("")
+        binding.etQuantity.setText("")
     }
 }

@@ -1,6 +1,7 @@
 package com.machmudow.shoppinglists.feature.list.details
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.NonNull
 import androidx.appcompat.widget.AppCompatImageButton
@@ -11,7 +12,10 @@ import com.machmudow.shoppinglists.databinding.RecyclerItemBinding
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingItem
 import com.machmudow.shoppinglists.utils.BaseRecyclerViewAdapter
 
-class DetailsAdapter(private val listener: DetailsListener) :
+class DetailsAdapter(
+    private val listener: DetailsListener,
+    private val isArchived: Boolean = false
+) :
     BaseRecyclerViewAdapter<ShoppingItem>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
@@ -25,13 +29,25 @@ class DetailsAdapter(private val listener: DetailsListener) :
         with(binding) {
             tvTitle.text = item.title
             tvQuantity.text = item.quantity.toString()
-            setInCartBtnDrawable(btnInCart, item)
-            btnInCart.setOnClickListener {
-                if (item.isInCart)
-                    listener.removeFromCart()
-                else
-                    listener.addToCart()
-            }
+            setInCartBtn(binding, item)
+        }
+    }
+
+    private fun setInCartBtn(binding: RecyclerItemBinding, item: ShoppingItem) {
+        if (isArchived)
+            binding.btnInCart.visibility = View.GONE
+        else {
+            onInCartBtnClick(binding.btnInCart, item)
+            setInCartBtnDrawable(binding.btnInCart, item)
+        }
+    }
+
+    private fun onInCartBtnClick(btnInCart: AppCompatImageButton, item: ShoppingItem) {
+        btnInCart.setOnClickListener {
+            if (item.isInCart)
+                listener.removeFromCart(item.id)
+            else
+                listener.addToCart(item.id)
         }
     }
 
@@ -49,6 +65,6 @@ class DetailsAdapter(private val listener: DetailsListener) :
 }
 
 interface DetailsListener {
-    fun addToCart()
-    fun removeFromCart()
+    fun addToCart(shoppingItemId: Int)
+    fun removeFromCart(shoppingItemId: Int)
 }

@@ -38,6 +38,7 @@ open class BaseListDialogFragment : BaseDaggerDialogFragment(R.layout.fragment_n
         status.observe(viewLifecycleOwner) {
             when (it) {
                 Status.SUCCESS -> {
+                    clearEditTexts()
                     dismiss()
                 }
                 Status.LOADING -> {

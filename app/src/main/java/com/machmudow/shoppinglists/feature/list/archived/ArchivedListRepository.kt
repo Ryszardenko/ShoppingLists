@@ -7,13 +7,18 @@ import javax.inject.Inject
 
 class ArchivedListRepository
 @Inject constructor(
-   private val shoppingListDAO: ShoppingListDAO
+    private val shoppingListDAO: ShoppingListDAO
 ) {
 
-    val archivedLists = shoppingListDAO.getArchivedShoppingLists()
+    val archivedLists = shoppingListDAO.getArchivedShoppingListsWithItems()
 
     fun unarchive(shoppingListId: Int) =
         GlobalScope.launch {
             shoppingListDAO.unarchive(shoppingListId)
+        }
+
+    fun delete(shoppingListId: Int) =
+        GlobalScope.launch {
+            shoppingListDAO.delete(shoppingListId)
         }
 }

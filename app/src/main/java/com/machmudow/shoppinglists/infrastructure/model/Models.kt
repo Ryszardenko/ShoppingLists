@@ -1,9 +1,6 @@
 package com.machmudow.shoppinglists.infrastructure.model
 
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.Relation
+import androidx.room.*
 import com.machmudow.shoppinglists.utils.DateUtils
 import java.io.Serializable
 
@@ -18,7 +15,11 @@ data class ShoppingList(
     val isArchived: Boolean = false
 ) : Serializable
 
-@Entity
+@Entity(foreignKeys = [ForeignKey(entity = ShoppingList::class,
+    parentColumns = arrayOf("id"),
+    childColumns = arrayOf("shoppingListId"),
+    onDelete = ForeignKey.CASCADE)]
+)
 data class ShoppingItem(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
