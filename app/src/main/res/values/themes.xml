@@ -5,6 +5,8 @@
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@color/light_green</item>
+        <item name="android:textColor">@color/light_green</item>
+        <item name="android:editTextColor">@color/light_green</item>
         <item name="textAllCaps">false</item>
         <item name="colorControlNormal">@color/white</item>
         <!--        <item name="actionOverflowButtonStyle">@style/MyOverflowButtonStyle</item>-->
@@ -15,6 +17,10 @@
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@color/light_green</item>
+        <item name="android:textColor">@color/light_green</item>
+        <item name="android:editTextColor">@color/light_green</item>
+        <item name="android:windowMinWidthMajor">80%</item>
+        <item name="android:windowMinWidthMinor">80%</item>
     </style>
 
 </resources>

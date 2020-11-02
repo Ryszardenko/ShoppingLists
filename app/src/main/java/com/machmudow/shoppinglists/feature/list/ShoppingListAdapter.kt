@@ -7,7 +7,10 @@ import com.machmudow.shoppinglists.databinding.RecyclerListItemBinding
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingList
 import com.machmudow.shoppinglists.utils.BaseRecyclerViewAdapter
 
-class ShoppingListAdapter : BaseRecyclerViewAdapter<ShoppingList>() {
+class ShoppingListAdapter(
+    private val listener: ShoppingListListener
+) : BaseRecyclerViewAdapter<ShoppingList>() {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
@@ -21,6 +24,13 @@ class ShoppingListAdapter : BaseRecyclerViewAdapter<ShoppingList>() {
         with(binding) {
             tvTitle.text = shoppingList.title
             tvDate.text = shoppingList.date
+            btnEdit.setOnClickListener {
+                listener.showDialog(shoppingList)
+            }
         }
     }
+}
+
+interface ShoppingListListener {
+    fun showDialog(shoppingList: ShoppingList)
 }

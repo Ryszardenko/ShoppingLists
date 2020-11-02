@@ -6,8 +6,13 @@
     <string name="archived_shopping_lists">Archived Shopping Lists</string>
     <string name="floating_action_button">floating action button</string>
     <string name="add_a_shopping_list">Add a shopping list</string>
+    <string name="edit_a_shopping_list">Edit a shopping list</string>
     <string name="title">Title</string>
+    <string name="title_required">Title is required.</string>
     <string name="description">Description</string>
     <string name="cancel">Cancel</string>
     <string name="create">Create</string>
+    <string name="error">An error occurred, please try again later.</string>
+    <string name="confirm">Confirm</string>
+    <string name="no_shopping_list">You have not added any shopping list</string>
 </resources>

@@ -3,6 +3,8 @@ package com.machmudow.shoppinglists.infrastructure.room
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingList
+import io.reactivex.Completable
+import io.reactivex.Flowable
 
 @Dao
 interface ShoppingListDAO {
@@ -19,9 +21,12 @@ interface ShoppingListDAO {
     @Update
     fun update(shoppingList: ShoppingList)
 
-    @Query("SELECT * FROM ShoppingList WHERE isArchived = 0")
+    @Query("DELETE FROM ShoppingList WHERE id = :shoppingListId")
+    fun remove(shoppingListId: Int)
+
+    @Query("SELECT * FROM ShoppingList WHERE isArchived = 0 ORDER BY date DESC")
     fun getShoppingLists(): LiveData<List<ShoppingList>>
 
-    @Query("SELECT * FROM ShoppingList WHERE isArchived = 1")
+    @Query("SELECT * FROM ShoppingList WHERE isArchived = 1 ORDER BY date DESC")
     fun getArchivedShoppingLists(): LiveData<List<ShoppingList>>
 }

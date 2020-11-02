@@ -7,6 +7,13 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="TextMontserratBold">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textColor">@color/light_green</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <style name="TextMontserratMedium.XXS" parent="TextMontserratMedium">
         <item name="android:textSize">@dimen/text_xxs</item>
     </style>
@@ -28,6 +35,10 @@
     </style>
 
     <style name="TextMontserratMedium.XL" parent="TextMontserratMedium">
+        <item name="android:textSize">@dimen/text_xl</item>
+    </style>
+
+    <style name="TextMontserratBold.XL" parent="TextMontserratBold">
         <item name="android:textSize">@dimen/text_xl</item>
     </style>
 

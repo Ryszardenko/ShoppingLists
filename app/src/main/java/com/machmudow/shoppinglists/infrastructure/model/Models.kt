@@ -3,6 +3,7 @@ package com.machmudow.shoppinglists.infrastructure.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.machmudow.shoppinglists.utils.DateUtils
+import java.io.Serializable
 
 @Entity
 data class ShoppingList(
@@ -13,7 +14,7 @@ data class ShoppingList(
     val date: String = DateUtils.getCurrentYearMonthDayTime(),
     val shoppingItems: List<ShoppingItem>? = null,
     val isArchived: Boolean = false
-)
+) : Serializable
 
 @Entity
 data class ShoppingItem(
