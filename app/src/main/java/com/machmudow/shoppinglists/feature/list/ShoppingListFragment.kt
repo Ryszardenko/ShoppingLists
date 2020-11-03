@@ -25,7 +25,10 @@ class ShoppingListFragment : Fragment(R.layout.fragment_shopping_list) {
     }
 
     private fun initPager() {
-        val adapter = ListPagerAdapter(context, childFragmentManager)
+        val adapter = MyPagerAdapter(
+            requireContext(),
+            childFragmentManager
+        )
         binding.viewPager.adapter = adapter
         binding.tabLayout.setupWithViewPager(binding.viewPager)
     }

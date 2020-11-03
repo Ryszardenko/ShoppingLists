@@ -13,6 +13,10 @@ import javax.inject.Inject
 
 class CurrentListFragment : BaseListFragment(), ShoppingListListener {
 
+    companion object {
+        fun newInstance() = CurrentListFragment()
+    }
+
     @Inject
     lateinit var viewModel: CurrentListViewModel
 

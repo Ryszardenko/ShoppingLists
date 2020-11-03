@@ -12,6 +12,10 @@ import javax.inject.Inject
 
 class ArchivedListFragment : BaseListFragment(), ShoppingListListener {
 
+    companion object {
+        fun newInstance() = ArchivedListFragment()
+    }
+
     @Inject
     lateinit var viewModel: ArchivedListViewModel
 
