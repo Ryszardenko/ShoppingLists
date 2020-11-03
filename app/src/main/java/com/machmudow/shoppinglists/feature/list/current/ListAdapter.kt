@@ -45,7 +45,7 @@ class ListAdapter(
         val inCartShoppingItems =
             shoppingListWithItems.shoppingItems.filter { it.isInCart }.size
         tvInCart.text = tvInCart.context.getString(
-            R.string.in_cart_per_all,
+            R.string.groceries_done,
             inCartShoppingItems,
             shoppingItems
         )

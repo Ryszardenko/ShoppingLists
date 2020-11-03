@@ -3,14 +3,13 @@ package com.machmudow.shoppinglists.feature.list.details
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.NonNull
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.content.ContextCompat
-import com.google.android.material.button.MaterialButton
 import com.machmudow.shoppinglists.R
 import com.machmudow.shoppinglists.databinding.RecyclerItemBinding
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingItem
 import com.machmudow.shoppinglists.utils.BaseRecyclerViewAdapter
+import com.machmudow.shoppinglists.utils.TextViewUtils.strike
 
 class DetailsAdapter(
     private val listener: DetailsListener,
@@ -28,7 +27,8 @@ class DetailsAdapter(
         val item = list[position]
         with(binding) {
             tvTitle.text = item.title
-            tvQuantity.text = item.quantity.toString()
+            tvQuantity.text = binding.root.context.getString(R.string.x_quantity, item.quantity)
+            tvQuantity.strike = item.isInCart
             setInCartBtn(binding, item)
         }
     }
