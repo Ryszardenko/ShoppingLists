@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
+import com.machmudow.shoppinglists.R
 import com.machmudow.shoppinglists.infrastructure.dagger.ViewModelFactory
 import dagger.android.support.DaggerDialogFragment
 import javax.inject.Inject
@@ -27,5 +28,9 @@ abstract class BaseDaggerDialogFragment(private val layoutId: Int) : DaggerDialo
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun getTheme(): Int {
+        return R.style.Dialog_Transparent
     }
 }

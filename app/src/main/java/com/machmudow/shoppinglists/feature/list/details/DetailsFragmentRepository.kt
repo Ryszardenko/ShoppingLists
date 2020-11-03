@@ -22,4 +22,9 @@ class DetailsFragmentRepository
         GlobalScope.launch {
             shoppingItemDAO.removeFromCart(shoppingItemId)
         }
+
+    fun deleteItem(shoppingItemId: Int) =
+        GlobalScope.launch {
+            shoppingItemDAO.deleteItem(shoppingItemId)
+        }
 }

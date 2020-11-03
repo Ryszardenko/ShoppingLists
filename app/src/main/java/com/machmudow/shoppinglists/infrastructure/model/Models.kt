@@ -9,9 +9,7 @@ data class ShoppingList(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val title: String,
-    val description: String,
     val date: String = DateUtils.getCurrentYearMonthDayTime(),
-//    val shoppingItems: List<ShoppingItem> = listOf(),
     val isArchived: Boolean = false
 ) : Serializable
 
@@ -27,7 +25,7 @@ data class ShoppingItem(
     val title: String,
     val quantity: Int,
     var isInCart: Boolean = false
-)
+) : Serializable
 
 data class ShoppingListWithItems(
     @Embedded val shoppingList: ShoppingList,

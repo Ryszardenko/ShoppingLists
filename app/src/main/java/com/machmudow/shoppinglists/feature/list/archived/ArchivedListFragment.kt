@@ -31,7 +31,7 @@ class ArchivedListFragment : BaseListFragment(), ShoppingListListener {
 
     override fun showDialog(shoppingList: ShoppingList) {
         AlertDialog.Builder(requireContext())
-            .setItems(R.array.unarchive) { _, which ->
+            .setItems(R.array.list_archived_edit) { _, which ->
                 when (which) {
                     0 -> viewModel.unarchive(shoppingList.id)
                     1 -> viewModel.delete(shoppingList.id)

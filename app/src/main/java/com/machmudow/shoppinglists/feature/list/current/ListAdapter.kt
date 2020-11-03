@@ -2,7 +2,9 @@ package com.machmudow.shoppinglists.feature.list.current
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatImageButton
 import com.machmudow.shoppinglists.R
 import com.machmudow.shoppinglists.databinding.RecyclerShoppingListBinding
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingList
@@ -26,14 +28,10 @@ class ListAdapter(
         val shoppingListWithItems = list[position]
         with(binding) {
             tvTitle.text = shoppingListWithItems.shoppingList.title
-            bindInCartTv(tvInCart, shoppingListWithItems)
 
-            btnEdit.setOnClickListener {
-                listener.showDialog(shoppingListWithItems.shoppingList)
-            }
-            layoutContainer.setOnClickListener {
-                listener.navigateTo(shoppingListWithItems.shoppingList.id)
-            }
+            bindInCartTv(tvInCart, shoppingListWithItems)
+            onEditBtnClick(btnEdit, shoppingListWithItems)
+            onContainerLayoutClick(layoutContainer, shoppingListWithItems)
         }
     }
 
@@ -49,6 +47,24 @@ class ListAdapter(
             inCartShoppingItems,
             shoppingItems
         )
+    }
+
+    private fun onEditBtnClick(
+        btnEdit: AppCompatImageButton,
+        shoppingListWithItems: ShoppingListWithItems
+    ) {
+        btnEdit.setOnClickListener {
+            listener.showDialog(shoppingListWithItems.shoppingList)
+        }
+    }
+
+    private fun onContainerLayoutClick(
+        layoutContainer: LinearLayout,
+        shoppingListWithItems: ShoppingListWithItems
+    ) {
+        layoutContainer.setOnClickListener {
+            listener.navigateTo(shoppingListWithItems.shoppingList.id)
+        }
     }
 }
 

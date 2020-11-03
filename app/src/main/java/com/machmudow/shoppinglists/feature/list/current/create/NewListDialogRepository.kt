@@ -15,7 +15,6 @@ class NewListDialogRepository
 @Inject constructor(
     private val shoppingListDAO: ShoppingListDAO
 ) {
-
     val status = MutableLiveData<Status>()
 
     fun createShoppingList(shoppingList: ShoppingList): Disposable {

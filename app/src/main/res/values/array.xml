@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <array name="edit">
+    <array name="list_edit">
         <item>Edit</item>
         <item>Archive</item>
         <item>Delete</item>
     </array>
-    <array name="unarchive">
+    <array name="list_archived_edit">
         <item>Unarchive</item>
+        <item>Delete</item>
+    </array>
+    <array name="item_edit">
+        <item>Edit</item>
         <item>Delete</item>
     </array>
 </resources>

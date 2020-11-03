@@ -35,8 +35,7 @@ class EditListDialogFragment : BaseListDialogFragment() {
         setDialogTitle(shoppingList)
         onConfirmClick {
             val editedShoppingList = shoppingList.copy(
-                title = binding.etTitle.text.toString(),
-                description = binding.etDescription.text.toString()
+                title = binding.etTitle.text.toString()
             )
             viewModel.editShoppingList(editedShoppingList)
         }
@@ -46,6 +45,5 @@ class EditListDialogFragment : BaseListDialogFragment() {
     private fun setDialogTitle(shoppingList: ShoppingList) {
         binding.tvDialogTitle.setText(R.string.edit_a_shopping_list)
         binding.etTitle.setText(shoppingList.title)
-        binding.etDescription.setText(shoppingList.description)
     }
 }

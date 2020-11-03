@@ -31,7 +31,7 @@ class CurrentListFragment : BaseListFragment(), ShoppingListListener {
 
     override fun showDialog(shoppingList: ShoppingList) {
         AlertDialog.Builder(requireContext())
-            .setItems(R.array.edit) { _, which ->
+            .setItems(R.array.list_edit) { _, which ->
                 when (which) {
                     0 -> editShoppingList(shoppingList)
                     1 -> viewModel.archiveShoppingList(shoppingList.id)

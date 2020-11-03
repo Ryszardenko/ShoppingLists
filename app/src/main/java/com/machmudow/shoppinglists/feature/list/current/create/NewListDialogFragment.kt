@@ -32,8 +32,7 @@ class NewListDialogFragment : BaseListDialogFragment() {
 
     private fun createShoppingList(): ShoppingList {
         val title = binding.etTitle.text.toString()
-        val description = binding.etDescription.text.toString()
 
-        return ShoppingList(title = title, description = description)
+        return ShoppingList(title = title)
     }
 }

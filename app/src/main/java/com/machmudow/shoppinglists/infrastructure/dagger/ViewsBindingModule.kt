@@ -7,6 +7,7 @@ import com.machmudow.shoppinglists.feature.list.current.create.NewListDialogFrag
 import com.machmudow.shoppinglists.feature.list.current.edit.EditListDialogFragment
 import com.machmudow.shoppinglists.feature.list.details.DetailsFragment
 import com.machmudow.shoppinglists.feature.list.details.create.NewItemDialogFragment
+import com.machmudow.shoppinglists.feature.list.details.edit.EditItemDialogFragment
 import dagger.Module
 import dagger.android.AndroidInjectionModule
 import dagger.android.ContributesAndroidInjector
@@ -34,4 +35,7 @@ abstract class ViewsBindingModule {
 
     @ContributesAndroidInjector
     abstract fun bindNewItemDialogFragment(): NewItemDialogFragment
+
+    @ContributesAndroidInjector
+    abstract fun bindEditItemDialogFragment(): EditItemDialogFragment
 }

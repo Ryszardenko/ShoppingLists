@@ -2,11 +2,13 @@ package com.machmudow.shoppinglists.feature.list.details
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.machmudow.shoppinglists.R
 import com.machmudow.shoppinglists.databinding.FragmentDetailsBinding
 import com.machmudow.shoppinglists.feature.list.details.create.NewItemDialogFragment
+import com.machmudow.shoppinglists.feature.list.details.edit.EditItemDialogFragment
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingItem
 import com.machmudow.shoppinglists.utils.BaseDaggerFragment
 import com.machmudow.shoppinglists.utils.Constants.IS_ARCHIVED
@@ -37,7 +39,7 @@ class DetailsFragment : BaseDaggerFragment(R.layout.fragment_details), DetailsLi
         val shoppingListId = arguments?.getInt(SHOPPING_LIST_ID)
         val isArchived = arguments?.getBoolean(IS_ARCHIVED)
 
-        if(isArchived == true) {
+        if (isArchived == true) {
             binding.fab.visibility = View.GONE
         }
 
@@ -53,6 +55,17 @@ class DetailsFragment : BaseDaggerFragment(R.layout.fragment_details), DetailsLi
 
     override fun removeFromCart(shoppingItemId: Int) {
         viewModel.removeFromCart(shoppingItemId)
+    }
+
+    override fun showDialog(shoppingItem: ShoppingItem) {
+        AlertDialog.Builder(requireContext())
+            .setItems(R.array.item_edit) { _, which ->
+                when (which) {
+                    0 -> showEditItemDialog(shoppingItem)
+                    1 -> viewModel.deleteItem(shoppingItem.id)
+                }
+            }
+            .show()
     }
 
     private fun initRecyclerView(shoppingListId: Int, isArchived: Boolean) {
@@ -74,6 +87,12 @@ class DetailsFragment : BaseDaggerFragment(R.layout.fragment_details), DetailsLi
                 setEmptyTvVisibility(shoppingListWithItems.shoppingItems)
                 hideProgressBar()
             }
+    }
+
+    private fun showEditItemDialog(shoppingItem: ShoppingItem) {
+        val edtItemDialogFragment = EditItemDialogFragment.newInstance(shoppingItem)
+        if (!edtItemDialogFragment.isAdded)
+            edtItemDialogFragment.show(childFragmentManager, edtItemDialogFragment.tag)
     }
 
     private fun onFabClick(shoppingListId: Int) {

@@ -8,6 +8,7 @@ import com.machmudow.shoppinglists.feature.list.current.edit.EditListDialogViewM
 import com.machmudow.shoppinglists.feature.list.details.DetailsFragmentViewModel
 import com.machmudow.shoppinglists.feature.list.details.create.NewItemDialogFragment
 import com.machmudow.shoppinglists.feature.list.details.create.NewItemDialogViewModel
+import com.machmudow.shoppinglists.feature.list.details.edit.EditItemDialogViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -33,15 +34,20 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(NewListDialogViewModel::class)
-    abstract fun bindNewListViewModel(viewModel: NewListDialogViewModel): ViewModel
+    abstract fun bindNewListDialogViewModel(viewModel: NewListDialogViewModel): ViewModel
 
     @Binds
     @IntoMap
     @ViewModelKey(EditListDialogViewModel::class)
-    abstract fun bindEditListViewModel(viewModel: EditListDialogViewModel): ViewModel
+    abstract fun bindEditListDialogViewModel(viewModel: EditListDialogViewModel): ViewModel
 
     @Binds
     @IntoMap
     @ViewModelKey(NewItemDialogViewModel::class)
-    abstract fun bindNewItemViewModel(viewModel: NewItemDialogViewModel): ViewModel
+    abstract fun bindNewItemDialogViewModel(viewModel: NewItemDialogViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(EditItemDialogViewModel::class)
+    abstract fun bindEditItemDialogViewModel(viewModel: EditItemDialogViewModel): ViewModel
 }

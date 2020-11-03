@@ -29,17 +29,30 @@ class DetailsAdapter(
             tvTitle.text = item.title
             tvQuantity.text = binding.root.context.getString(R.string.x_quantity, item.quantity)
             tvQuantity.strike = item.isInCart
-            setInCartBtn(binding, item)
+            setInCartBtnDrawable(btnInCart, item)
+            prepareView(binding, item)
         }
     }
 
-    private fun setInCartBtn(binding: RecyclerItemBinding, item: ShoppingItem) {
+    private fun prepareView(binding: RecyclerItemBinding, item: ShoppingItem) {
         if (isArchived)
-            binding.btnInCart.visibility = View.GONE
+            setArchivedView(binding)
         else {
-            onInCartBtnClick(binding.btnInCart, item)
-            setInCartBtnDrawable(binding.btnInCart, item)
+            setNotArchivedView(binding, item)
         }
+    }
+
+    private fun setArchivedView(binding: RecyclerItemBinding) {
+        binding.btnInCart.isClickable = false
+        binding.btnEdit.visibility = View.GONE
+    }
+
+    private fun setNotArchivedView(
+        binding: RecyclerItemBinding,
+        item: ShoppingItem
+    ) {
+        onInCartBtnClick(binding.btnInCart, item)
+        onEditBtnClick(binding.btnEdit, item)
     }
 
     private fun onInCartBtnClick(btnInCart: AppCompatImageButton, item: ShoppingItem) {
@@ -62,9 +75,19 @@ class DetailsAdapter(
             )
         )
     }
+
+    private fun onEditBtnClick(
+        btnEdit: AppCompatImageButton,
+        shoppingItem: ShoppingItem
+    ) {
+        btnEdit.setOnClickListener {
+            listener.showDialog(shoppingItem)
+        }
+    }
 }
 
 interface DetailsListener {
     fun addToCart(shoppingItemId: Int)
     fun removeFromCart(shoppingItemId: Int)
+    fun showDialog(shoppingItem: ShoppingItem)
 }
