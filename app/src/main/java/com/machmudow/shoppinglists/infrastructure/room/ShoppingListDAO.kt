@@ -12,19 +12,19 @@ interface ShoppingListDAO {
     fun insertShoppingList(shoppingList: ShoppingList)
 
     @Query("DELETE FROM ShoppingList")
-    fun dropTable()
+    suspend fun dropTable()
 
     @Update
     fun update(shoppingList: ShoppingList)
 
     @Query("DELETE FROM ShoppingList WHERE id = :shoppingListId")
-    fun delete(shoppingListId: Int)
+    suspend fun delete(shoppingListId: Int)
 
     @Query("UPDATE ShoppingList SET isArchived = 1 WHERE id = :shoppingListId")
-    fun archive(shoppingListId: Int)
+    suspend fun archive(shoppingListId: Int)
 
     @Query("UPDATE ShoppingList SET isArchived = 0 WHERE id = :shoppingListId")
-    fun unarchive(shoppingListId: Int)
+    suspend fun unarchive(shoppingListId: Int)
 
     @Transaction
     @Query("SELECT * FROM ShoppingList WHERE id = :shoppingListId")

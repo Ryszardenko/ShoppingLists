@@ -10,17 +10,17 @@ interface ShoppingItemDAO {
     fun insertShoppingItem(shoppingItem: ShoppingItem)
 
     @Query("DELETE FROM ShoppingItem")
-    fun dropTable()
+    suspend fun dropTable()
 
     @Update
     fun update(shoppingItem: ShoppingItem)
 
     @Query("UPDATE ShoppingItem SET isInCart = 1 WHERE id = :shoppingItemId")
-    fun addToCart(shoppingItemId: Int)
+    suspend fun addToCart(shoppingItemId: Int)
 
     @Query("UPDATE ShoppingItem SET isInCart = 0 WHERE id = :shoppingItemId")
-    fun removeFromCart(shoppingItemId: Int)
+    suspend fun removeFromCart(shoppingItemId: Int)
 
     @Query("DELETE FROM ShoppingItem WHERE id = :shoppingItemId")
-    fun deleteItem(shoppingItemId: Int)
+    suspend fun deleteItem(shoppingItemId: Int)
 }

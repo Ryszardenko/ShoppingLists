@@ -1,6 +1,9 @@
 package com.machmudow.shoppinglists.feature.list.archived
 
+import androidx.lifecycle.viewModelScope
 import com.machmudow.shoppinglists.utils.BaseViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class ArchivedListViewModel
@@ -10,6 +13,15 @@ class ArchivedListViewModel
 
     val archivedLists = repository.archivedLists
 
-    fun unarchive(shoppingListId: Int) = repository.unarchive(shoppingListId)
-    fun delete(shoppingListId: Int) = repository.delete(shoppingListId)
+    fun unarchive(shoppingListId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.unarchive(shoppingListId)
+        }
+    }
+
+    fun delete(shoppingListId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.delete(shoppingListId)
+        }
+    }
 }

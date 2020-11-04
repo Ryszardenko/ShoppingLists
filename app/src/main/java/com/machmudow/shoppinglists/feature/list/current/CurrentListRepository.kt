@@ -1,8 +1,6 @@
 package com.machmudow.shoppinglists.feature.list.current
 
 import com.machmudow.shoppinglists.infrastructure.room.ShoppingListDAO
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CurrentListRepository
@@ -12,13 +10,7 @@ class CurrentListRepository
 
     val shoppingLists = shoppingListDAO.getShoppingListsWithItems()
 
-    fun deleteShoppingList(shoppingListId: Int) =
-        GlobalScope.launch {
-            shoppingListDAO.delete(shoppingListId)
-        }
+    suspend fun deleteShoppingList(shoppingListId: Int) = shoppingListDAO.delete(shoppingListId)
 
-    fun archiveShoppingList(shoppingListId: Int) =
-        GlobalScope.launch {
-            shoppingListDAO.archive(shoppingListId)
-        }
+    suspend fun archiveShoppingList(shoppingListId: Int) = shoppingListDAO.archive(shoppingListId)
 }

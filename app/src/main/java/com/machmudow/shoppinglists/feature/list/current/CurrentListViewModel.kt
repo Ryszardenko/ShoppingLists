@@ -1,6 +1,9 @@
 package com.machmudow.shoppinglists.feature.list.current
 
+import androidx.lifecycle.viewModelScope
 import com.machmudow.shoppinglists.utils.BaseViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CurrentListViewModel
@@ -10,7 +13,15 @@ class CurrentListViewModel
 
     val shoppingLists = repository.shoppingLists
 
-    fun archiveShoppingList(shoppingListId: Int) = repository.archiveShoppingList(shoppingListId)
+    fun archiveShoppingList(shoppingListId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.archiveShoppingList(shoppingListId)
+        }
+    }
 
-    fun deleteShoppingList(shoppingListId: Int) = repository.deleteShoppingList(shoppingListId)
+    fun deleteShoppingList(shoppingListId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteShoppingList(shoppingListId)
+        }
+    }
 }

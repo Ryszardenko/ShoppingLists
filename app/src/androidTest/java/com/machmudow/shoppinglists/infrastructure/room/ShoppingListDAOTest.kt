@@ -8,12 +8,15 @@ import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
 import com.machmudow.shoppinglists.getOrAwaitValue
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingList
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+@ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4::class)
 @SmallTest
 class ShoppingListDAOTest {
@@ -49,36 +52,36 @@ class ShoppingListDAOTest {
     }
 
     @Test
-    fun delete() {
+    fun delete() = runBlockingTest {
         val shoppingList = ShoppingList(title = "Test")
         dao.insertShoppingList(shoppingList)
         dao.delete(shoppingList.id)
 
-        val shoppingListWithItems  = dao.getShoppingListsWithItems().getOrAwaitValue()
+        val shoppingListWithItems = dao.getShoppingListsWithItems().getOrAwaitValue()
 
         assertThat(!shoppingListWithItems.map { it.shoppingList }.contains(shoppingList))
     }
 
     @Test
-    fun archive() {
+    fun archive() = runBlockingTest {
         val shoppingList = ShoppingList(title = "Test")
         dao.insertShoppingList(shoppingList)
 
         dao.archive(shoppingList.id)
 
-        val shoppingListWithItems  = dao.getShoppingListsWithItems().getOrAwaitValue()
+        val shoppingListWithItems = dao.getShoppingListsWithItems().getOrAwaitValue()
 
         assertThat(!shoppingListWithItems.map { it.shoppingList }.contains(shoppingList))
     }
 
     @Test
-    fun unarchive() {
+    fun unarchive() = runBlockingTest{
         val shoppingList = ShoppingList(title = "Test", isArchived = true)
         dao.insertShoppingList(shoppingList)
 
         dao.unarchive(shoppingList.id)
 
-        val shoppingListWithItems  = dao.getShoppingListsWithItems().getOrAwaitValue()
+        val shoppingListWithItems = dao.getShoppingListsWithItems().getOrAwaitValue()
 
         assertThat(!shoppingListWithItems.map { it.shoppingList }.contains(shoppingList))
     }

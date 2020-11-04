@@ -1,8 +1,6 @@
 package com.machmudow.shoppinglists.feature.list.archived
 
 import com.machmudow.shoppinglists.infrastructure.room.ShoppingListDAO
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class ArchivedListRepository
@@ -12,13 +10,7 @@ class ArchivedListRepository
 
     val archivedLists = shoppingListDAO.getArchivedShoppingListsWithItems()
 
-    fun unarchive(shoppingListId: Int) =
-        GlobalScope.launch {
-            shoppingListDAO.unarchive(shoppingListId)
-        }
+    suspend fun unarchive(shoppingListId: Int) = shoppingListDAO.unarchive(shoppingListId)
 
-    fun delete(shoppingListId: Int) =
-        GlobalScope.launch {
-            shoppingListDAO.delete(shoppingListId)
-        }
+    suspend fun delete(shoppingListId: Int) = shoppingListDAO.delete(shoppingListId)
 }
