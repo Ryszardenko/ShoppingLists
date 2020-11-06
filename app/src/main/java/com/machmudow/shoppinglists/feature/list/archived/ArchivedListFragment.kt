@@ -8,7 +8,6 @@ import com.machmudow.shoppinglists.R
 import com.machmudow.shoppinglists.feature.list.BaseListFragment
 import com.machmudow.shoppinglists.feature.list.current.ShoppingListListener
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingList
-import javax.inject.Inject
 
 class ArchivedListFragment : BaseListFragment(), ShoppingListListener {
 
@@ -16,8 +15,7 @@ class ArchivedListFragment : BaseListFragment(), ShoppingListListener {
         fun newInstance() = ArchivedListFragment()
     }
 
-    @Inject
-    lateinit var viewModel: ArchivedListViewModel
+    private lateinit var viewModel: ArchivedListViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

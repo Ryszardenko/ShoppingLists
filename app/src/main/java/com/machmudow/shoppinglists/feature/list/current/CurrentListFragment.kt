@@ -9,7 +9,6 @@ import com.machmudow.shoppinglists.feature.list.BaseListFragment
 import com.machmudow.shoppinglists.feature.list.current.create.NewListDialogFragment
 import com.machmudow.shoppinglists.feature.list.current.edit.EditListDialogFragment
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingList
-import javax.inject.Inject
 
 class CurrentListFragment : BaseListFragment(), ShoppingListListener {
 
@@ -17,8 +16,7 @@ class CurrentListFragment : BaseListFragment(), ShoppingListListener {
         fun newInstance() = CurrentListFragment()
     }
 
-    @Inject
-    lateinit var viewModel: CurrentListViewModel
+    private lateinit var viewModel: CurrentListViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

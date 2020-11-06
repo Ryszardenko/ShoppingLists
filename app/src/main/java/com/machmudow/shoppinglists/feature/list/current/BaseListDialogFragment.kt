@@ -5,8 +5,9 @@ import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.machmudow.shoppinglists.R
 import com.machmudow.shoppinglists.databinding.FragmentNewListBinding
-import com.machmudow.shoppinglists.utils.BaseDaggerDialogFragment
-import com.machmudow.shoppinglists.utils.ButtonUtils
+import com.machmudow.shoppinglists.base.BaseDaggerDialogFragment
+import com.machmudow.shoppinglists.utils.ButtonUtils.disableBtn
+import com.machmudow.shoppinglists.utils.ButtonUtils.enableBtn
 import com.machmudow.shoppinglists.utils.Status
 import com.machmudow.shoppinglists.utils.ToastUtils.showShortToast
 import com.machmudow.shoppinglists.utils.ValidationUtils
@@ -39,10 +40,10 @@ open class BaseListDialogFragment : BaseDaggerDialogFragment(R.layout.fragment_n
                     dismiss()
                 }
                 Status.LOADING -> {
-                    ButtonUtils.disableBtn(binding.btnConfirm)
+                    binding.btnConfirm.disableBtn()
                 }
                 Status.ERROR -> {
-                    ButtonUtils.enableBtn(binding.btnConfirm)
+                    binding.btnConfirm.enableBtn()
                     context?.showShortToast(R.string.error)
                 }
                 else -> {

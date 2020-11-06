@@ -25,8 +25,7 @@ class NewItemDialogFragment : BaseItemDialogFragment() {
         }
     }
 
-    @Inject
-    lateinit var viewModel: NewItemDialogViewModel
+    private lateinit var viewModel: NewItemDialogViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

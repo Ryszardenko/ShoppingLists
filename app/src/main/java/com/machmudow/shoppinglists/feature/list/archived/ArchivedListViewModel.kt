@@ -1,7 +1,7 @@
 package com.machmudow.shoppinglists.feature.list.archived
 
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.machmudow.shoppinglists.utils.BaseViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -9,7 +9,7 @@ import javax.inject.Inject
 class ArchivedListViewModel
 @Inject constructor(
     private val repository: ArchivedListRepository
-) : BaseViewModel() {
+) : ViewModel() {
 
     val archivedLists = repository.archivedLists
 

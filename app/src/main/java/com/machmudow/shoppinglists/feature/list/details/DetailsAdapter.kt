@@ -8,7 +8,7 @@ import androidx.core.content.ContextCompat
 import com.machmudow.shoppinglists.R
 import com.machmudow.shoppinglists.databinding.RecyclerItemBinding
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingItem
-import com.machmudow.shoppinglists.utils.BaseRecyclerViewAdapter
+import com.machmudow.shoppinglists.base.BaseRecyclerViewAdapter
 import com.machmudow.shoppinglists.utils.TextViewUtils.strike
 
 class DetailsAdapter(

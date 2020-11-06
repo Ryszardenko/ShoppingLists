@@ -10,11 +10,9 @@ import com.machmudow.shoppinglists.databinding.FragmentDetailsBinding
 import com.machmudow.shoppinglists.feature.list.details.create.NewItemDialogFragment
 import com.machmudow.shoppinglists.feature.list.details.edit.EditItemDialogFragment
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingItem
-import com.machmudow.shoppinglists.utils.BaseDaggerFragment
+import com.machmudow.shoppinglists.base.BaseDaggerFragment
 import com.machmudow.shoppinglists.utils.Constants.IS_ARCHIVED
 import com.machmudow.shoppinglists.utils.Constants.SHOPPING_LIST_ID
-import javax.inject.Inject
-
 
 class DetailsFragment : BaseDaggerFragment(R.layout.fragment_details), DetailsListener {
 
@@ -27,8 +25,7 @@ class DetailsFragment : BaseDaggerFragment(R.layout.fragment_details), DetailsLi
         }
     }
 
-    @Inject
-    lateinit var viewModel: DetailsFragmentViewModel
+    private lateinit var viewModel: DetailsFragmentViewModel
 
     val binding get() = _binding as FragmentDetailsBinding
 
@@ -47,6 +44,11 @@ class DetailsFragment : BaseDaggerFragment(R.layout.fragment_details), DetailsLi
             initRecyclerView(shoppingListId, isArchived!!)
             onFabClick(shoppingListId)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        clearToolbar()
     }
 
     override fun addToCart(shoppingItemId: Int) {
@@ -113,6 +115,10 @@ class DetailsFragment : BaseDaggerFragment(R.layout.fragment_details), DetailsLi
         binding.toolbar.setNavigationOnClickListener {
             activity?.onBackPressed()
         }
+    }
+
+    private fun clearToolbar() {
+        (activity as AppCompatActivity).setSupportActionBar(null)
     }
 
     private fun setEmptyTvVisibility(shoppingItems: List<ShoppingItem>) {

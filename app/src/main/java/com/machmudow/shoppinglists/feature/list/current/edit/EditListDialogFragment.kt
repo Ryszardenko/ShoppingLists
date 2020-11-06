@@ -7,7 +7,6 @@ import com.machmudow.shoppinglists.R
 import com.machmudow.shoppinglists.feature.list.current.BaseListDialogFragment
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingList
 import com.machmudow.shoppinglists.utils.Constants.SHOPPING_LIST
-import javax.inject.Inject
 
 class EditListDialogFragment : BaseListDialogFragment() {
 
@@ -21,8 +20,7 @@ class EditListDialogFragment : BaseListDialogFragment() {
         }
     }
 
-    @Inject
-    lateinit var viewModel: EditListDialogViewModel
+    private lateinit var viewModel: EditListDialogViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

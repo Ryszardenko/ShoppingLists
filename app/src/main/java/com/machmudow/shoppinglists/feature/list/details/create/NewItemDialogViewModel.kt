@@ -1,7 +1,7 @@
 package com.machmudow.shoppinglists.feature.list.details.create
 
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingItem
-import com.machmudow.shoppinglists.utils.BaseViewModel
+import com.machmudow.shoppinglists.base.BaseViewModel
 import javax.inject.Inject
 
 class NewItemDialogViewModel

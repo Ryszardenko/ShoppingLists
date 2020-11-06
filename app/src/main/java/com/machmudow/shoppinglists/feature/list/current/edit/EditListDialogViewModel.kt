@@ -1,7 +1,7 @@
 package com.machmudow.shoppinglists.feature.list.current.edit
 
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingList
-import com.machmudow.shoppinglists.utils.BaseViewModel
+import com.machmudow.shoppinglists.base.BaseViewModel
 import javax.inject.Inject
 
 class EditListDialogViewModel

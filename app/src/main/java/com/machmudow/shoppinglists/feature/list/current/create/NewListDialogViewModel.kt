@@ -1,7 +1,7 @@
 package com.machmudow.shoppinglists.feature.list.current.create
 
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingList
-import com.machmudow.shoppinglists.utils.BaseViewModel
+import com.machmudow.shoppinglists.base.BaseViewModel
 import javax.inject.Inject
 
 class NewListDialogViewModel
@@ -12,6 +12,8 @@ class NewListDialogViewModel
     val status = repository.status
 
     fun createShoppingList(shoppingList: ShoppingList) {
-        repository.createShoppingList(shoppingList)
+        compositeDisposable.add(
+            repository.createShoppingList(shoppingList)
+        )
     }
 }

@@ -5,7 +5,7 @@ import com.machmudow.shoppinglists.infrastructure.model.ShoppingList
 import com.machmudow.shoppinglists.infrastructure.room.ShoppingListDAO
 import com.machmudow.shoppinglists.utils.Log
 import com.machmudow.shoppinglists.utils.Status
-import io.reactivex.Flowable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -18,8 +18,8 @@ class EditListDialogRepository
     val status = MutableLiveData<Status>()
 
     fun editShoppingList(shoppingList: ShoppingList): Disposable {
-        return Flowable.just(shoppingList)
-            .doOnNext {
+        return Single.just(shoppingList)
+            .doOnSubscribe {
                 shoppingListDAO.update(shoppingList)
             }
             .subscribeOn(Schedulers.io())

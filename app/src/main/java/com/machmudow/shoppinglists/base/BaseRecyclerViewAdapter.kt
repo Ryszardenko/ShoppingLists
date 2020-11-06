@@ -1,4 +1,4 @@
-package com.machmudow.shoppinglists.utils
+package com.machmudow.shoppinglists.base
 
 import android.view.View
 import android.view.ViewGroup

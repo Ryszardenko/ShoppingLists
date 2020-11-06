@@ -9,7 +9,7 @@ import com.machmudow.shoppinglists.R
 import com.machmudow.shoppinglists.databinding.RecyclerShoppingListBinding
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingList
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingListWithItems
-import com.machmudow.shoppinglists.utils.BaseRecyclerViewAdapter
+import com.machmudow.shoppinglists.base.BaseRecyclerViewAdapter
 
 class ListAdapter(
     private val listener: ShoppingListListener

@@ -12,9 +12,8 @@ import com.machmudow.shoppinglists.feature.list.current.CurrentListFragment
 import com.machmudow.shoppinglists.feature.list.current.ListAdapter
 import com.machmudow.shoppinglists.feature.list.current.ShoppingListListener
 import com.machmudow.shoppinglists.feature.list.details.DetailsFragment
-import com.machmudow.shoppinglists.infrastructure.model.ShoppingList
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingListWithItems
-import com.machmudow.shoppinglists.utils.BaseDaggerFragment
+import com.machmudow.shoppinglists.base.BaseDaggerFragment
 
 abstract class BaseListFragment : BaseDaggerFragment(R.layout.fragment_list), ShoppingListListener {
 

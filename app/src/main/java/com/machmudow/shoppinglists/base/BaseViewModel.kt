@@ -1,4 +1,4 @@
-package com.machmudow.shoppinglists.utils
+package com.machmudow.shoppinglists.base
 
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable

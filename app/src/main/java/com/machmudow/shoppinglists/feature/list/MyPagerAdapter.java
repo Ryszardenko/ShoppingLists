@@ -1,20 +1,20 @@
 package com.machmudow.shoppinglists.feature.list;
 
-import android.content.Context;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import com.machmudow.shoppinglists.R;
 import com.machmudow.shoppinglists.feature.list.archived.ArchivedListFragment;
 import com.machmudow.shoppinglists.feature.list.current.CurrentListFragment;
 import org.jetbrains.annotations.NotNull;
 
 public class MyPagerAdapter extends FragmentPagerAdapter {
-    Context context;
+    String listsTitle;
+    String archivedTitle;
 
-    public MyPagerAdapter(Context context, FragmentManager fm) {
+    public MyPagerAdapter(FragmentManager fm, String listsTitle, String archivedTitle) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        this.context = context;
+        this.listsTitle = listsTitle;
+        this.archivedTitle = archivedTitle;
     }
 
     @Override
@@ -25,25 +25,17 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
     @NotNull
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 0:
-                return CurrentListFragment.Companion.newInstance();
-            case 1:
-                return ArchivedListFragment.Companion.newInstance();
-            default:
-                return null;
+        if (position == 0) {
+            return CurrentListFragment.Companion.newInstance();
         }
+        return ArchivedListFragment.Companion.newInstance();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        switch (position) {
-            case 0:
-                return context.getResources().getText(R.string.shopping_lists);
-            case 1:
-                return context.getResources().getText(R.string.archived_shopping_lists);
-            default:
-                return null;
+        if(position == 0) {
+            return listsTitle;
         }
+        return archivedTitle;
     }
 }

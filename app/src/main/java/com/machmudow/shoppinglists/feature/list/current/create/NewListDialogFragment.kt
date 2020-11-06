@@ -5,7 +5,6 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.machmudow.shoppinglists.feature.list.current.BaseListDialogFragment
 import com.machmudow.shoppinglists.infrastructure.model.ShoppingList
-import javax.inject.Inject
 
 class NewListDialogFragment : BaseListDialogFragment() {
 
@@ -13,8 +12,7 @@ class NewListDialogFragment : BaseListDialogFragment() {
         fun newInstance() = NewListDialogFragment()
     }
 
-    @Inject
-    lateinit var viewModel: NewListDialogViewModel
+    private lateinit var viewModel: NewListDialogViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
