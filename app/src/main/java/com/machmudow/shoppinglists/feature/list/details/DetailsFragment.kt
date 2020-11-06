@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.machmudow.shoppinglists.R
 import com.machmudow.shoppinglists.databinding.FragmentDetailsBinding
@@ -26,12 +28,16 @@ class DetailsFragment : BaseDaggerFragment(R.layout.fragment_details), DetailsLi
     }
 
     private lateinit var viewModel: DetailsFragmentViewModel
+    private lateinit var navController: NavController
 
     val binding get() = _binding as FragmentDetailsBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDetailsBinding.bind(view)
+
+        viewModel =
+            ViewModelProvider(this, viewModelFactory).get(DetailsFragmentViewModel::class.java)
 
         val shoppingListId = arguments?.getInt(SHOPPING_LIST_ID)
         val isArchived = arguments?.getBoolean(IS_ARCHIVED)
@@ -113,7 +119,7 @@ class DetailsFragment : BaseDaggerFragment(R.layout.fragment_details), DetailsLi
             supportActionBar?.title = title
         }
         binding.toolbar.setNavigationOnClickListener {
-            activity?.onBackPressed()
+            activity?.onBackPressedDispatcher?.onBackPressed()
         }
     }
 
