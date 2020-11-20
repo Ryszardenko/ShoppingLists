@@ -5,7 +5,6 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.machmudow.shoppinglists.R
 import com.machmudow.shoppinglists.databinding.FragmentDetailsBinding
@@ -28,9 +27,7 @@ class DetailsFragment : BaseDaggerFragment(R.layout.fragment_details), DetailsLi
     }
 
     private lateinit var viewModel: DetailsFragmentViewModel
-    private lateinit var navController: NavController
-
-    val binding get() = _binding as FragmentDetailsBinding
+    private val binding get() = _binding as FragmentDetailsBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -113,6 +110,7 @@ class DetailsFragment : BaseDaggerFragment(R.layout.fragment_details), DetailsLi
 
     private fun initToolbar(title: String) {
         (activity as AppCompatActivity).apply {
+            clearToolbar()
             setSupportActionBar(binding.toolbar)
             supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_back)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
